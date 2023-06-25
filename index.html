@@ -1,0 +1,62 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+<main class="container">
+
+    <h1>The <code>.meta</code> Directory: Let's Clean Things Up &#129529;&#129529;&#129529;</h1>
+    <p>
+        This site exists to advocate that tool makers look for config files in <code>.meta</code> directories of
+        projects.
+    </p>
+    <p>
+        This is avoid making a mess in the root directory of projects, as <a href="https://twitter.com/WarrenInTheBuff/status/1672839156647575552">this tweet</a> laments.
+    </p>
+    <p>
+        If the <code>.meta</code> directory convention was adopted, then the following files in the root of a project:
+    </p>
+    <pre>
+/package.json
+/tsconfig.json
+/.eslintrc
+/.prettierrc
+/.babel.config.js (implied child .babelrc)
+/.webpack.config.js
+/jest.config.js
+/.env
+/docker-compose.yml
+/gitlab-ci.yml
+/.npmrc
+/.editorconfig
+    </pre>
+
+    <p>
+        Could instead all be moved into a single top level <code>.meta</code> directory:
+    </p>
+    <pre>
+/.meta
+    </pre>
+
+    <p>
+        Nice and tidy.
+    </p>
+
+    <h2>Implementation</h2>
+
+    <p>
+        To implement the <code>.meta</code> standard, a tool looking for its configuration file in directory <code>X</code>
+        and failing to find it should next look in directory <code>X/.meta</code>, if it exists, for that same file.
+    </p>
+
+    <p>
+        No other constraint on config file resolution or ordering is placed on a tool.
+    </p>
+
+    <h2><code>.meta</code> respectors</h2>
+    <ul>
+        <li>Be the first project to become a <code>.meta</code> respector!</li>
+    </ul>
+</main>
+</body>
+</html>
